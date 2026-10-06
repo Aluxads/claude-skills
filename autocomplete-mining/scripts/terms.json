@@ -1,0 +1,8 @@
+{
+  "_comment": "Example term lists. Replace the values for your niche. adult: words that tag a suggestion as 'adult' so you can filter it out. onsite_fit.core: phrases that tag 'onsite_fit' on their own. onsite_fit.room_words: words that tag 'onsite_fit' only together with 'near me' or 'on site'.",
+  "adult": ["porn", "xxx", "nsfw", "explicit", "nude"],
+  "onsite_fit": {
+    "core": ["on site", "onsite", "at my office", "at my home", "home service", "mobile", "24/7"],
+    "room_words": ["home", "office", "room"]
+  }
+}
