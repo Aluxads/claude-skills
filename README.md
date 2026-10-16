@@ -8,6 +8,7 @@ Free skills for Claude Code, built by Aluxads, a B2B growth agency. The focus is
 - `serp-teardown`: pulls Google page 1 for a batch of queries and shows what the rankers have in common.
 - `autocomplete-mining`: mines Google autocomplete for a seed list with no AI tokens used for the data pull.
 - `gsd-mode`: one command for an uninterrupted Claude Code working day, one git worktree per agent.
+- `image-process`: one page image from a prompts doc slot to webp srcset, asset log row and paste snippet, with a render review stop.
 
 ## Install
 
@@ -52,6 +53,12 @@ Switches Claude Code into an uninterrupted working day with one command. No sess
 
 Script: `scripts/gsd-mode-hook.mjs` (a `UserPromptSubmit` hook, install steps in the skill). Commands: `/gsd on`, `/gsd off`, `/gsd`.
 
+### image-process
+
+Takes one image slot from a prompts doc and runs it to a finished webp set. It generates the PNG through a shell command you set in `IMAGE_GEN_CMD`, then stops for your render review. After `--approve` it resizes to a webp srcset with ffmpeg (metadata stripped), checks each file against a byte limit, appends a row to an asset log and prints a paste ready srcset snippet with the alt text. Trigger: `/image-process`.
+
+Script: `scripts/image-chain.mjs` (`--help` lists every flag). It needs `ffmpeg` and `ffprobe`.
+
 ## Install
 
 Copy a skill folder into `~/.claude/skills/`:
@@ -61,6 +68,7 @@ cp -R seo-onpage-pass ~/.claude/skills/
 cp -R autocomplete-mining ~/.claude/skills/
 cp -R serp-teardown ~/.claude/skills/
 cp -R gsd-mode ~/.claude/skills/
+cp -R image-process ~/.claude/skills/
 ```
 
 Restart Claude Code. The skills load by name and by the trigger phrases in each `SKILL.md`.
@@ -70,6 +78,7 @@ Restart Claude Code. The skills load by name and by the trigger phrases in each 
 - Node 18 or newer. The scripts use only the Node standard library, no `npm install`.
 - A Serper key for serp-teardown, set as `SERPER_API_KEY` in the environment or in a `.env` file in the directory you run from. Serper gives 2,500 free credits and a query costs 1 credit. You can skip the key by passing your own results with `--serp file --serp-file results.json`.
 - `w3m` for seo-onpage-pass (`brew install w3m` on macOS).
+- `ffmpeg` and `ffprobe` for image-process, plus a generation command in `IMAGE_GEN_CMD` (for example the `openai images` CLI).
 - Optional: Google Ads keyword metrics for serp-teardown through a client module you provide with `--ads-client <path>` (it is never auto discovered), or a metrics file. See the skill for details.
 - Disclosure: autocomplete-mining calls Google's suggest endpoint, which is undocumented. Run it with a delay (250 ms minimum is enforced), at low volume, from your own IP, and check Google's terms for your use.
 
