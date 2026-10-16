@@ -1,6 +1,30 @@
-# Claude skills by Aluxads
+# Claude skills by Aluxads: free Claude Code skills for marketing, SEO and sales ops
 
-Skills for Claude Code: three for SEO work and one for running a full working day. Each skill is a folder with a `SKILL.md` and a `scripts/` directory.
+Free skills for Claude Code, built by Aluxads, a B2B growth agency. The focus is marketing, SEO and sales operations. Each skill is a folder with a `SKILL.md` and a `scripts/` directory.
+
+## Skills in this repo
+
+- `seo-onpage-pass`: on page SEO pass for one page and one keyword, scored on seven dimensions.
+- `serp-teardown`: pulls Google page 1 for a batch of queries and shows what the rankers have in common.
+- `autocomplete-mining`: mines Google autocomplete for a seed list with no AI tokens used for the data pull.
+- `gsd-mode`: one command for an uninterrupted Claude Code working day, one git worktree per agent.
+
+## Install
+
+```
+cp -R <skill name> ~/.claude/skills/<skill name>/
+# example
+cp -R seo-onpage-pass ~/.claude/skills/seo-onpage-pass/
+```
+
+Restart Claude Code. Each skill loads by name and by the trigger phrases in its `SKILL.md`.
+
+## More
+
+- Library page with every skill, install steps and FAQ: https://aluxads.com/resources/claude-skills/
+- SEO skills for Claude Code: https://aluxads.com/resources/claude-skills/seo/
+
+---
 
 ## Skills
 
