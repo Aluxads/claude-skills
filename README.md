@@ -1,6 +1,6 @@
 # Claude skills by Aluxads
 
-Three skills for Claude Code that handle SEO work. Each skill is a folder with a `SKILL.md` and a `scripts/` directory.
+Skills for Claude Code: three for SEO work and one for running a full working day. Each skill is a folder with a `SKILL.md` and a `scripts/` directory.
 
 ## Skills
 
@@ -22,6 +22,12 @@ Takes a batch of queries and pulls Google page 1 for each. It fetches every rank
 
 Script: `scripts/teardown.mjs`. Tests: `scripts/test.mjs`.
 
+### gsd-mode
+
+Switches Claude Code into an uninterrupted working day with one command. No session limit stops, no handoff unless you ask, agents pick only tasks that need no human decision (oldest first), each agent works in its own git worktree, and every question waits for a single list at the end. A flag file holds today's date, so the mode lasts the day across sessions and projects and switches itself off tomorrow.
+
+Script: `scripts/gsd-mode-hook.mjs` (a `UserPromptSubmit` hook, install steps in the skill). Commands: `/gsd on`, `/gsd off`, `/gsd`.
+
 ## Install
 
 Copy a skill folder into `~/.claude/skills/`:
@@ -30,6 +36,7 @@ Copy a skill folder into `~/.claude/skills/`:
 cp -R seo-onpage-pass ~/.claude/skills/
 cp -R autocomplete-mining ~/.claude/skills/
 cp -R serp-teardown ~/.claude/skills/
+cp -R gsd-mode ~/.claude/skills/
 ```
 
 Restart Claude Code. The skills load by name and by the trigger phrases in each `SKILL.md`.
