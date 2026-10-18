@@ -9,6 +9,7 @@ Free skills for Claude Code, built by Aluxads, a B2B growth agency. The focus is
 - `autocomplete-mining`: mines Google autocomplete for a seed list with no AI tokens used for the data pull.
 - `gsd-mode`: one command for an uninterrupted Claude Code working day, one git worktree per agent.
 - `image-process`: one page image from a prompts doc slot to webp srcset, asset log row and paste snippet, with a render review stop.
+- `secret-ledger`: names only check of env files and repos for leaked secrets, with scan, lint-env, intake and selftest.
 
 ## Install
 
@@ -69,6 +70,7 @@ cp -R autocomplete-mining ~/.claude/skills/
 cp -R serp-teardown ~/.claude/skills/
 cp -R gsd-mode ~/.claude/skills/
 cp -R image-process ~/.claude/skills/
+cp -R secret-ledger ~/.claude/skills/
 ```
 
 Restart Claude Code. The skills load by name and by the trigger phrases in each `SKILL.md`.

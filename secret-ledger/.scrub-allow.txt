@@ -1,0 +1,6 @@
+# secret-ledger public port allowlist. Used with: scrub.mjs <folder> --allow <this file>
+# documented default credential dir and env file path, plus fixture dirs in selftest
+\.secrets/
+\.env\.api\.local
+# SKILL.md frontmatter freshness line
+^verified: \d{4}-\d{2}-\d{2}$
