@@ -10,6 +10,8 @@ Free skills for Claude Code, built by Aluxads, a B2B growth agency. The focus is
 - `gsd-mode`: one command for an uninterrupted Claude Code working day, one git worktree per agent.
 - `image-process`: one page image from a prompts doc slot to webp srcset, asset log row and paste snippet, with a render review stop.
 - `secret-ledger`: names only check of env files and repos for leaked secrets, with scan, lint-env, intake and selftest.
+- `conversion-tracking-audit`: audits GA4 key events, Google Ads conversion actions and offline readiness, scored report with a fix list.
+- `search-term-review`: joins Google Ads search terms to CRM lead quality, lag aware, proposes negatives for sign off.
 
 ## Install
 
@@ -59,6 +61,18 @@ Script: `scripts/gsd-mode-hook.mjs` (a `UserPromptSubmit` hook, install steps in
 Takes one image slot from a prompts doc and runs it to a finished webp set. It generates the PNG through a shell command you set in `IMAGE_GEN_CMD`, then stops for your render review. After `--approve` it resizes to a webp srcset with ffmpeg (metadata stripped), checks each file against a byte limit, appends a row to an asset log and prints a paste ready srcset snippet with the alt text. Trigger: `/image-process`.
 
 Script: `scripts/image-chain.mjs` (`--help` lists every flag). It needs `ffmpeg` and `ffprobe`.
+
+### conversion-tracking-audit
+
+Audits conversion tracking end to end for one site, one GA4 property and one Google Ads account: tags on the site, GA4 key events, Ads conversion actions (GA4 import, website tag, offline), whether every lead action fires once and counts as primary, and offline and enhanced conversion readiness. Writes a scored, dated report with a fix list and a sign off step. Read only by default, every write is a separate approval.
+
+Script: `scripts/ads-conversion-actions.mjs` (read only GAQL list, env names passed by the caller). Template: `report-template.md`.
+
+### search-term-review
+
+Pulls Google Ads search terms with cost and conversions, joins them to CRM outcomes (which leads became customers), applies a lag model so recent spend is never called waste, classifies each term and writes a dated proposal of negatives with the spend each one saves. The agent never adds negatives itself; the account owner approves line by line.
+
+Scripts: `scripts/search-terms.mjs` (GAQL pull to CSV), `scripts/join-crm.mjs` (pure node join and classification). Template: `report-template.md`.
 
 ## Install
 
